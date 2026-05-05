@@ -1,11 +1,9 @@
 # 🖧 DHCP Server Setup on Linux (RHEL/CentOS)
-
 > A step-by-step guide to installing and configuring a DHCP server on Linux using `dhcp-server`.
 
 ---
 
-## 📋 Table of Contents
-
+##  Table of Contents
 - [What is DHCP?](#what-is-dhcp)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -16,24 +14,21 @@
 
 ---
 
-## 🌐 What is DHCP?
-
+##  What is DHCP?
 **DHCP (Dynamic Host Configuration Protocol)** is a network protocol used to automatically assign IP addresses and other network configuration parameters to devices on a network.
 
 Without DHCP, every device on a network would need to be manually configured with an IP address. DHCP automates this process, making network management easier and more scalable.
 
 ---
 
-## ✅ Prerequisites
-
+## Prerequisites
 - A machine running RHEL / CentOS / Rocky Linux / AlmaLinux
 - Root or sudo access
 - Basic knowledge of Linux terminal
 
 ---
 
-## 📦 Installation
-
+##  Installation
 Open the terminal and run the following command to install the DHCP server package:
 
 ```bash
@@ -50,8 +45,7 @@ This will install the following packages:
 
 ---
 
-## ⚙️ Configuration
-
+##  Configuration
 The main configuration file is located at:
 
 ```
@@ -84,7 +78,6 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 ![Configured config file](screenshots/03-dhcpd-conf-configured.png)
 
 ### Configuration Explained
-
 | Directive | Description |
 |-----------|-------------|
 | `subnet` | The network address of your subnet |
@@ -99,8 +92,7 @@ The full config file is available here: [`configs/dhcpd.conf`](configs/dhcpd.con
 
 ---
 
-## 🚀 Starting the Service
-
+##  Starting the Service
 After saving the configuration file, enable and start the DHCP service:
 
 ```bash
@@ -112,8 +104,7 @@ systemctl status dhcpd.service
 
 ---
 
-## ✔️ Verification
-
+##  Verification
 Check a client machine's network settings to confirm it received an IP from the DHCP server.
 
 The client should show:
@@ -131,7 +122,7 @@ cat /var/lib/dhcpd/dhcpd.leases
 
 ---
 
-## 📁 File Structure
+## File Structure
 
 ```
 linux-dhcp-server-setup/
@@ -149,8 +140,7 @@ linux-dhcp-server-setup/
 
 ---
 
-## 📝 Notes
-
+##  Notes
 - This guide covers **IPv4** only. For IPv6, configure `dhcpd6.conf` instead.
 - Firewall rules may need to be updated to allow DHCP traffic (UDP ports 67 and 68).
 
@@ -161,6 +151,5 @@ firewall-cmd --reload
 
 ---
 
-## 📄 License
-
+## License
 This project is open source and available under the [MIT License](LICENSE).
